@@ -23,9 +23,11 @@ class TicTacToe {
 
     isFinished() {
       if (this.getWinner() === true || this.noMoreTurns() === true){
-          return true;
+          this.counter = true;
+          return this.counter;
       } else {
-          return false;
+          this.counter = null;
+          return this.counter;
       }
     }
 
@@ -71,12 +73,13 @@ class TicTacToe {
 
 
     isDraw() {
-       if (this.noMoreTurns() === true && this.getWinner()){
-           return true;
-       } else {
+       if (this.isFinished() !== true || this.getWinner()){
            return false;
+       } else  {
+            return true;
+       } 
+          
        }
-    }
 
     getFieldValue(rowIndex, colIndex) {
         return this.matrix[rowIndex][colIndex];
